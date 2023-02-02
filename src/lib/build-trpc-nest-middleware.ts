@@ -1,7 +1,7 @@
-import { createHTTPHandler } from '@trpc/server/adapters/standalone';
-import { ModuleRef } from '@nestjs/core';
-import { AnyRouter } from '@trpc/server';
-import { buildNestResolver } from './build-nest-resolver';
+import { createHTTPHandler } from "@trpc/server/adapters/standalone";
+import { ModuleRef } from "@nestjs/core";
+import { AnyRouter } from "@trpc/server";
+import { buildNestResolver } from "./build-nest-resolver";
 
 export interface BuildTrpcNestMiddlewareOptions {
   /** Your TRPC Router */
@@ -11,7 +11,7 @@ export interface BuildTrpcNestMiddlewareOptions {
   moduleRef: ModuleRef;
 
   /** A function that returns the context object as used with TRPC */
-  createContext: () => any;
+  createContext: (...args: any[]) => any | Promise<any>;
 }
 
 /**
@@ -26,14 +26,18 @@ export interface BuildTrpcNestMiddlewareOptions {
  * @param createContext A function that returns the context object as used with TRPC
  * @returns Express middleware which is capable of handling trpc requests
  */
-export function buildTrpcNestMiddleware({ moduleRef, router, createContext }: BuildTrpcNestMiddlewareOptions) {
+export function buildTrpcNestMiddleware({
+  moduleRef,
+  router,
+  createContext,
+}: BuildTrpcNestMiddlewareOptions) {
   return function trpcNestMiddleware(req: any, res: any) {
     const { resolveNestDependency } = buildNestResolver(req, moduleRef);
 
     return createHTTPHandler({
       router,
       createContext: () => {
-        const userProvidedContext = createContext();
+        const userProvidedContext = createContext(req);
 
         return {
           ...userProvidedContext,

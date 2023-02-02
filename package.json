@@ -1,5 +1,5 @@
 {
-  "name": "trpc-nestjs-adapter",
+  "name": "@pfotendoctor/trpc-nestjs-adapter",
   "version": "1.0.0-alpha.1",
   "description": "TRPC adapter for NestJS",
   "keywords": [
@@ -13,7 +13,7 @@
     "email": "dar3.st@gmail.com"
   },
   "license": "MIT",
-  "main": "./dist/lib/index.js",
+  "main": "./dist/lib/index.d.ts",
   "types": "./dist/lib/index.d.ts",
   "exports": {
     ".": {
@@ -33,15 +33,14 @@
     "@nestjs/core": "^9.2.1",
     "@nestjs/platform-express": "^9.2.1",
     "@trpc/server": "^10.9.0",
-    "reflect-metadata": "^0.1.12",
-    "rxjs": "^7.1.0"
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.2.0"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@types/node": "^16.0.0",
+    "@types/node": "18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
-    "eslint": "^8.2.0",
+    "eslint": "^8.30.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.25.2",
