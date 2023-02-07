@@ -1,7 +1,7 @@
-import { AnyRouter } from '@trpc/server';
+import { AnyRouter } from "@trpc/server";
 export interface TrpcModuleOptions<TRouter = AnyRouter> {
-    path: '/trpc' | string;
+    path: "/trpc" | string;
     router: TRouter;
-    createContext: () => any;
+    createContext: (...args: any[]) => any | Promise<any>;
 }
 //# sourceMappingURL=trpc-module-options.type.d.ts.map

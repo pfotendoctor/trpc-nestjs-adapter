@@ -1,6 +1,6 @@
-import { NestExpressApplication } from '@nestjs/platform-express';
-import { TrpcModuleOptions } from './trpc-module-options.type';
-import { BuildTrpcNestMiddlewareOptions } from './build-trpc-nest-middleware';
+import { NestExpressApplication } from "@nestjs/platform-express";
+import { TrpcModuleOptions } from "./trpc-module-options.type";
+import { BuildTrpcNestMiddlewareOptions } from "./build-trpc-nest-middleware";
 interface Options extends TrpcModuleOptions, BuildTrpcNestMiddlewareOptions {
     expressApp: NestExpressApplication;
 }

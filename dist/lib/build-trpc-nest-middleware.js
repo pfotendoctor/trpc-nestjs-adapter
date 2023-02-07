@@ -15,13 +15,13 @@ const build_nest_resolver_1 = require("./build-nest-resolver");
  * @param createContext A function that returns the context object as used with TRPC
  * @returns Express middleware which is capable of handling trpc requests
  */
-function buildTrpcNestMiddleware({ moduleRef, router, createContext }) {
+function buildTrpcNestMiddleware({ moduleRef, router, createContext, }) {
     return function trpcNestMiddleware(req, res) {
         const { resolveNestDependency } = (0, build_nest_resolver_1.buildNestResolver)(req, moduleRef);
         return (0, standalone_1.createHTTPHandler)({
             router,
             createContext: () => {
-                const userProvidedContext = createContext();
+                const userProvidedContext = createContext(req);
                 return {
                     ...userProvidedContext,
                     resolveNestDependency,
