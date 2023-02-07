@@ -1,10 +1,13 @@
-import { NestExpressApplication } from '@nestjs/platform-express';
-import { TrpcModuleOptions } from './trpc-module-options.type';
+import { NestExpressApplication } from "@nestjs/platform-express";
+import { TrpcModuleOptions } from "./trpc-module-options.type";
 
-import { buildTrpcNestMiddleware, BuildTrpcNestMiddlewareOptions } from './build-trpc-nest-middleware';
+import {
+  buildTrpcNestMiddleware,
+  BuildTrpcNestMiddlewareOptions,
+} from "./build-trpc-nest-middleware";
 
 interface Options extends TrpcModuleOptions, BuildTrpcNestMiddlewareOptions {
-  expressApp: NestExpressApplication,
+  expressApp: NestExpressApplication;
 }
 
 /**
@@ -12,7 +15,11 @@ interface Options extends TrpcModuleOptions, BuildTrpcNestMiddlewareOptions {
  * @param options: Options
  */
 export function attachTrpcToExpressApp({
-  router, moduleRef, createContext, path, expressApp,
+  router,
+  moduleRef,
+  createContext,
+  path,
+  expressApp,
 }: Options): void {
   const trpcNestMiddleware = buildTrpcNestMiddleware({
     router,
