@@ -1,0 +1,1 @@
+{"version":3,"file":"infer-context-type.type.d.ts","sourceRoot":"","sources":["../../src/lib/infer-context-type.type.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,cAAc,CAAC;AACpD,OAAO,EAAE,YAAY,EAAE,MAAM,sBAAsB,CAAC;AAEpD,MAAM,MAAM,gBAAgB,CAAC,QAAQ,IACnC,QAAQ,SAAS,MAAM,GAAG,GACtB,oBAAoB,CAAC,QAAQ,CAAC,GAAG,YAAY,GAC7C,YAAY,CAAC"}
