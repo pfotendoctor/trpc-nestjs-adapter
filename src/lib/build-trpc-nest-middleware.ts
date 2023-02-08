@@ -37,7 +37,7 @@ export function buildTrpcNestMiddleware({
     return createHTTPHandler({
       router,
       createContext: () => {
-        const userProvidedContext = createContext(req);
+        const userProvidedContext = createContext(req, resolveNestDependency);
 
         return {
           ...userProvidedContext,
