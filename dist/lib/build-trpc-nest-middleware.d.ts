@@ -1,12 +1,13 @@
 import { ModuleRef } from "@nestjs/core";
 import { AnyRouter } from "@trpc/server";
+import { buildNestResolver } from "./build-nest-resolver";
 export interface BuildTrpcNestMiddlewareOptions {
     /** Your TRPC Router */
     router: AnyRouter;
     /** The NestJS ModuleRef */
     moduleRef: ModuleRef;
     /** A function that returns the context object as used with TRPC */
-    createContext: (...args: any[]) => any | Promise<any>;
+    createContext: (request: Request, resolveNestDependency: ReturnType<typeof buildNestResolver>['resolveNestDependency']) => any | Promise<any>;
 }
 /**
  * Builds an Express middleware that handles all trpc requests.

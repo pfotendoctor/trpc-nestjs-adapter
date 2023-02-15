@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.buildTrpcNestMiddleware = void 0;
 const standalone_1 = require("@trpc/server/adapters/standalone");
 const build_nest_resolver_1 = require("./build-nest-resolver");
+;
 /**
  * Builds an Express middleware that handles all trpc requests.
  *
@@ -21,7 +22,7 @@ function buildTrpcNestMiddleware({ moduleRef, router, createContext, }) {
         return (0, standalone_1.createHTTPHandler)({
             router,
             createContext: () => {
-                const userProvidedContext = createContext(req);
+                const userProvidedContext = createContext(req, resolveNestDependency);
                 return {
                     ...userProvidedContext,
                     resolveNestDependency,

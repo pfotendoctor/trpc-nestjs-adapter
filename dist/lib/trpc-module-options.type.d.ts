@@ -1,7 +1,8 @@
 import { AnyRouter } from "@trpc/server";
+import { buildNestResolver } from "./build-nest-resolver";
 export interface TrpcModuleOptions<TRouter = AnyRouter> {
     path: "/trpc" | string;
     router: TRouter;
-    createContext: (...args: any[]) => any | Promise<any>;
+    createContext: (request: Request, resolveNestDependency: ReturnType<typeof buildNestResolver>['resolveNestDependency']) => any | Promise<any>;
 }
 //# sourceMappingURL=trpc-module-options.type.d.ts.map
