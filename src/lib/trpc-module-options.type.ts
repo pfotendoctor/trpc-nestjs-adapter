@@ -8,6 +8,7 @@ export interface TrpcModuleOptions<TRouter = AnyRouter> {
   router: TRouter;
   createContext: (
     request: Request,
+    response: Response,
     resolveNestDependency: ReturnType<typeof buildNestResolver>['resolveNestDependency']
   ) => any | Promise<any>;
 }

@@ -14,6 +14,7 @@ export interface BuildTrpcNestMiddlewareOptions {
   /** A function that returns the context object as used with TRPC */
   createContext: (
     request: Request,
+    response: Response,
     resolveNestDependency: ReturnType<typeof buildNestResolver>['resolveNestDependency']
   ) => any | Promise<any>;
 };
@@ -42,7 +43,7 @@ export function buildTrpcNestMiddleware({
     return createHTTPHandler({
       router,
       createContext: () => {
-        const userProvidedContext = createContext(req, resolveNestDependency);
+        const userProvidedContext = createContext(req, res, resolveNestDependency);
 
         return {
           ...userProvidedContext,
