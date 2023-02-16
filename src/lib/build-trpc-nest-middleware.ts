@@ -42,8 +42,8 @@ export function buildTrpcNestMiddleware({
 
     return createHTTPHandler({
       router,
-      createContext: () => {
-        const userProvidedContext = createContext(req, res, resolveNestDependency);
+      createContext: async () => {
+        const userProvidedContext = await createContext(req, res, resolveNestDependency);
 
         return {
           ...userProvidedContext,
