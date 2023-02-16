@@ -21,8 +21,8 @@ function buildTrpcNestMiddleware({ moduleRef, router, createContext, }) {
         const { resolveNestDependency } = (0, build_nest_resolver_1.buildNestResolver)(req, moduleRef);
         return (0, standalone_1.createHTTPHandler)({
             router,
-            createContext: () => {
-                const userProvidedContext = createContext(req, res, resolveNestDependency);
+            createContext: async () => {
+                const userProvidedContext = await createContext(req, res, resolveNestDependency);
                 return {
                     ...userProvidedContext,
                     resolveNestDependency,
