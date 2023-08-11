@@ -8,8 +8,9 @@ import { TrpcModuleOptions } from './trpc-module-options.type';
 
 @Module({})
 export class TrpcModule implements OnModuleInit {
-  @Inject()
-  private readonly moduleRef!: ModuleRef;
+  constructor(private moduleRef: ModuleRef) {
+
+  }
 
   @Inject()
   private readonly httpAdapterHost!: HttpAdapterHost;
@@ -39,7 +40,6 @@ export class TrpcModule implements OnModuleInit {
   }
 
   onModuleInit() {
-    this.moduleRef.create
     attachTrpcToExpressApp({
       moduleRef: this.moduleRef,
       expressApp: this.httpAdapterHost.httpAdapter.getInstance(),
